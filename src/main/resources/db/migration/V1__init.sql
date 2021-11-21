@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS  usuarios (
     # de scooter VARCHAR(45) NOT NULL,
     distancia VARCHAR(45) NULL,
     PRIMARY KEY (id)
+
     );
 
 
