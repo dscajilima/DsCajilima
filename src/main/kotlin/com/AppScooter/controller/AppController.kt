@@ -21,16 +21,16 @@ class AppController {
     }
     @PostMapping
     fun save (@RequestBody appService: AppService): App {
-        return appService.save(appw)
+        return appService.save(App)
     }
 
     @PutMapping
     fun update (@RequestBody appService: AppService): App {
-        return appService.update(app)
+        return appService.update(App)
     }
     @PatchMapping
     fun updatedistancia (@RequestBody appService: AppService): App {
-        return appService.updatedistancia(app)
+        return appService.updatedistancia(App)
     }
     @DeleteMapping("/delete/{id}")
     fun delete (@PathVariable("id") id: Long): Boolean {

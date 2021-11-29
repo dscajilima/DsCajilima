@@ -27,8 +27,8 @@ class ScooterController {
         return scooterService.update(scooter)
     }
     @PatchMapping
-    fun updateUnidad # (@RequestBody scooter: Scooter): Scooter {
-        return scooterService.updateUnidad #(scooter)
+    fun updateUnidad  (@RequestBody scooter: Scooter): Scooter {
+        return scooterService.updateUnidad(scooter)
     }
     @DeleteMapping("/delete/{id}")
     fun delete (@PathVariable("id") id: Long): Boolean {

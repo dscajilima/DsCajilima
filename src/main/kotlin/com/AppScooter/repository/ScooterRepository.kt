@@ -1,4 +1,8 @@
 package com.AppScooter.repository
 
-interface ScooterRepository {
+import com.AppScooter.model.Scooter
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface ScooterRepository: JpaRepository<Scooter, Long> {
+    fun findById (id: Long?): Scooter?
 }
