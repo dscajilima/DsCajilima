@@ -15,6 +15,7 @@ class UsuariosService {
 
     fun list(): List<Usuarios> {
 
+
         return usuariosRepository.findAll()
     }
 
