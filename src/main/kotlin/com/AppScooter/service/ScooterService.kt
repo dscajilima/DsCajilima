@@ -3,8 +3,10 @@ package com.AppScooter.service
 import com.AppScooter.model.Scooter
 import com.AppScooter.repository.ScooterRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.server.ResponseStatusException
 
 @Service
 
@@ -21,7 +23,18 @@ class ScooterService {
     }
 
     fun update(@RequestBody scooter: Scooter): Scooter {
-        return scooterRepository.save(scooter)
+        try {
+            if (scooter.habilitado.equals("") && (scooter.unidad.equals(""))) {
+                throw Exception()
+            } else {
+                return scooterRepository.save(scooter)
+            }
+        }
+        catch (ex: Exception) {
+            throw ResponseStatusException(
+                HttpStatus.NO_CONTENT, "No Puede estar vacio", ex
+            )
+        }
     }
 
     fun updateUnidad (scooter: Scooter): Scooter {

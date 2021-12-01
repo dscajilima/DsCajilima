@@ -3,8 +3,10 @@ package com.AppScooter.service
 import com.AppScooter.model.App
 import com.AppScooter.repository.AppRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.server.ResponseStatusException
 
 @Service
 
@@ -23,11 +25,18 @@ class AppService {
     }
 
     fun update(@RequestBody app: App): App {
-        if (app.scooter.equals("") && (app.distancia.equals(""))){
+        try {
+            if (app.scooter.equals("") && (app.distancia.equals(""))) {
                 throw Exception()
             } else {
                 return appRepository.save(app)
             }
+        }
+        catch (ex: Exception) {
+            throw ResponseStatusException(
+                HttpStatus.NO_CONTENT, "No Puede estar vacio", ex
+            )
+        }
     }
     fun updateDistancia (app: App): App {
         val response = appRepository.findById(app.id)

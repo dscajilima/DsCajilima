@@ -26,7 +26,15 @@ class UsuariosService {
     }
 
     fun update(@RequestBody usuarios: Usuarios): Usuarios {
-        return usuariosRepository.save(usuarios)
+        try {
+            val response = usuariosRepository.findById(usuarios.id)
+                ?: throw Exception()
+            return usuariosRepository.save(usuarios)
+        }
+        catch (ex: Exception) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Usuario no encontrado", ex)
+        }
     }
 
     fun updateTelefono (usuarios: Usuarios) {
