@@ -23,14 +23,12 @@ class AppService {
     }
 
     fun update(@RequestBody app: App): App {
-        if (app.scooter.equals("") && if (app.distancia.equals("")) {
+        if (app.scooter.equals("") && (app.distancia.equals(""))){
                 throw Exception()
             } else {
                 return appRepository.save(app)
             }
-        )
     }
-
     fun updateDistancia (app: App): App {
         val response = appRepository.findById(app.id)
             ?: throw Exception()
@@ -39,6 +37,7 @@ class AppService {
         }
         return appRepository.save(response)
     }
+
     fun delete (id:Long): Boolean{
         appRepository.deleteById(id)
         return true

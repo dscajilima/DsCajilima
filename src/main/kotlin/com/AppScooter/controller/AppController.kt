@@ -20,21 +20,21 @@ class AppController {
         return appService.list()
     }
     @PostMapping
-    fun save (@RequestBody appService: AppService): App {
-        return appService.save(App)
+    fun save (@RequestBody app: App): App {
+        return appService.save(app)
     }
 
     @PutMapping
-    fun update (@RequestBody appService: AppService): App {
-        return appService.update(App)
+    fun update (@RequestBody app: App): App {
+        return appService.update(app)
     }
     @PatchMapping
-    fun updatedistancia (@RequestBody appService: AppService): App {
-        return appService.updatedistancia(App)
+    fun updatedistancia (@RequestBody app: App): App {
+        return appService.updateDistancia(app)
     }
     @DeleteMapping("/delete/{id}")
     fun delete (@PathVariable("id") id: Long): Boolean {
-        return scooterService.delete(id)
+        return appService.delete(id)
     }
 
 }

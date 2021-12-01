@@ -20,23 +20,24 @@ class UsuariosController {
         }
 
         @PostMapping
-        fun save (@RequestBody usuarios: Usuarios): Usuarios {
+        fun save(@RequestBody usuarios: Usuarios): Usuarios {
             return usuariosService.save(usuarios)
         }
 
         @PutMapping
-        fun update (@RequestBody usuarios: Usuarios): Usuarios {
+        fun update(@RequestBody usuarios: Usuarios): Usuarios {
             return usuariosService.update(usuarios)
         }
 
         @PatchMapping
-        fun updateTelefono (@RequestBody usuarios: Usuarios): Usuarios {
-            return usuariosService.updateCI(usuarios)
+        fun updateTelefono(@RequestBody usuarios: Usuarios): Usuarios {
+            return usuariosService.update(usuarios)
         }
 
         @DeleteMapping("/delete/{id}")
-        fun delete (@PathVariable("id") id: Long): Boolean {
+        fun delete(@PathVariable("id") id: Long): Boolean {
             return usuariosService.delete(id)
         }
 
     }
+}

@@ -24,7 +24,7 @@ class ScooterService {
         return scooterRepository.save(scooter)
     }
 
-    fun updateDescription (scooter: Scooter): Scooter {
+    fun updateUnidad (scooter: Scooter): Scooter {
         val response = scooterRepository.findById(scooter.id)
             ?: throw Exception()
         response.apply {
