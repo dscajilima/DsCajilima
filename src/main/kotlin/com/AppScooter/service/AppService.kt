@@ -50,6 +50,7 @@ class AppService {
     fun delete (id:Long): Boolean{
         appRepository.deleteById(id)
         return true
+
     }
 
 }
