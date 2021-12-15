@@ -34,7 +34,7 @@ class AppService {
         }
         catch (ex: Exception) {
             throw ResponseStatusException(
-                HttpStatus.NO_CONTENT, "No Puede estar vacio", ex
+                HttpStatus.NO_CONTENT, "No Puede estar vacio", ex,
             )
         }
     }
