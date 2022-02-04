@@ -1,9 +1,7 @@
 package com.AppScooter.controller
 
 import com.AppScooter.model.App
-import com.AppScooter.model.Scooter
 import com.AppScooter.service.AppService
-import com.AppScooter.service.ScooterService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 

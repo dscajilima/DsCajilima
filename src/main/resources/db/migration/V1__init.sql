@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS  usuarios (
   PRIMARY KEY (id)
   );
 
-  CREATE TABLE IF NOT EXISTS  sistem (
+CREATE TABLE IF NOT EXISTS  sistem (
     id serial,
     scooter VARCHAR(45) NOT NULL,
     distancia VARCHAR(45) NULL,
