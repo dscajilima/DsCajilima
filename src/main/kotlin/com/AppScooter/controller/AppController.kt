@@ -14,24 +14,27 @@ class AppController {
     lateinit var appService: AppService
 
     @GetMapping
-    fun list(): List<App>{
+    fun list(): List<App> {
         return appService.list()
     }
+
     @PostMapping
-    fun save (@RequestBody app: App): App {
+    fun save(@RequestBody app: App): App {
         return appService.save(app)
     }
 
     @PutMapping
-    fun update (@RequestBody app: App): App {
+    fun update(@RequestBody app: App): App {
         return appService.update(app)
     }
+
     @PatchMapping
-    fun updatedistancia (@RequestBody app: App): App {
+    fun updatedistancia(@RequestBody app: App): App {
         return appService.updateDistancia(app)
     }
+
     @DeleteMapping("/delete/{id}")
-    fun delete (@PathVariable("id") id: Long): Boolean {
+    fun delete(@PathVariable("id") id: Long): Boolean {
         return appService.delete(id)
     }
 
