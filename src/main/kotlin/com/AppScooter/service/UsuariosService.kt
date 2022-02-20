@@ -21,7 +21,7 @@ class UsuariosService {
         return usuariosRepository.findAll()
     }
 
-    fun save (@RequestBody usuarios: Usuarios): Usuarios {
+    fun save(@RequestBody usuarios: Usuarios): Usuarios {
         return usuariosRepository.save(usuarios)
     }
 
@@ -30,30 +30,30 @@ class UsuariosService {
             val response = usuariosRepository.findById(usuarios.id)
                 ?: throw Exception()
             return usuariosRepository.save(usuarios)
-        }
-        catch (ex: Exception) {
+        } catch (ex: Exception) {
             throw ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Usuario no encontrado", ex)
+                HttpStatus.NOT_FOUND, "Usuario no encontrado", ex
+            )
         }
     }
 
-    fun updateTelefono (usuarios: Usuarios) {
+    fun updateTelefono(usuarios: Usuarios) {
         try {
             val response = usuariosRepository.findById(usuarios.id)
                 ?: throw Exception()
             response.apply {
-                this.usuario=CI
+                this.usuario = CI
 
             }
-        }
-        catch (ex: Exception) {
+        } catch (ex: Exception) {
             throw ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Telefono no encontrado", ex)
+                HttpStatus.NOT_FOUND, "Telefono no encontrado", ex
+            )
         }
     }
 
 
-    fun delete (id:Long): Boolean{
+    fun delete(id: Long): Boolean {
         usuariosRepository.deleteById(id)
         return true
     }

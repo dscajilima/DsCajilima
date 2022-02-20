@@ -31,35 +31,36 @@ class AppService {
             } else {
                 return appRepository.save(app)
             }
-        }
-        catch (ex: Exception) {
+        } catch (ex: Exception) {
             throw ResponseStatusException(
                 HttpStatus.NO_CONTENT, "No Puede estar vacio", ex,
             )
         }
     }
-    fun updateDistancia (app: App): App {
+
+    fun updateDistancia(app: App): App {
         val response = appRepository.findById(app.id)
             ?: throw Exception()
         response.apply {
-            this.distancia=app.distancia
+            this.distancia = app.distancia
         }
         return appRepository.save(response)
     }
 
-    fun delete (id:Long): Boolean{
+    fun delete(id: Long): Boolean {
         appRepository.deleteById(id)
         return true
 
     }
-    fun verificarLetras(cedula: String?, nombre: String?, apellido: String?):Boolean{
-        if (cedula?.length!! == 10){
+
+    fun verificarLetras(cedula: String?, nombre: String?, apellido: String?): Boolean {
+        if (cedula?.length!! == 10) {
             return false
         }
-        if (nombre?.length!! < 20){
+        if (nombre?.length!! < 20) {
             return false
         }
-        if (apellido?.length!! < 20){
+        if (apellido?.length!! < 20) {
             return false
         }
 
