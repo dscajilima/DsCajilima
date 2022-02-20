@@ -87,7 +87,6 @@ class ScooterServiceTest {
     fun updateAppIsIdCorrect(){
 
         Mockito.`when`(scooterRepository.findById(returnObject.id)).thenReturn(returnObject)
-        Mockito.`when`(scooterRepository.save(Mockito.any(App::class.java))).thenReturn(returnObject)
         val response = scooterService.update(newObject)
         Assertions.assertEquals(response.id, newObject.id)
         Assertions.assertEquals(response.habilitado, newObject.habilitado)
@@ -106,22 +105,19 @@ class ScooterServiceTest {
     @Test
     fun updateScooterFailedUsuarios(){
         Assertions.assertThrows(Exception::class.java) {
-            scooterMock.apply { usuariosMock= " "}
-            Mockito.`when`(usuariosRepository.findById(returnObject.id)).thenReturn(scooterMock)
             Mockito.`when`(scooterRepository.save(Mockito.any(Scooter::class.java))).thenReturn(scooterMock)
+
         }
 
     }
 
     @Test
-    fun updateUsuariosFailedScooter(){
+    fun updateUsuariosFailedScooter() {
         Assertions.assertThrows(Exception::class.java) {
-            scooterMock.apply { usuariosMock= " "}
-            Mockito.`when`(usuariosRepository.findById(returnObject.id)).thenReturn(scooterMock)
+
             Mockito.`when`(scooterRepository.save(Mockito.any(Scooter::class.java))).thenReturn(scooterMock)
 
         }
-
     }
 
 
@@ -130,19 +126,34 @@ class ScooterServiceTest {
 
     @Test
     fun deleteAppCorrect(){
-        Mockito.`when`(usuariosRepository.findById(newObject.id)).thenReturn(returnObject)
         Mockito.`when`(ScooterRepository.save(Mockito.any(Scooter::class.java))).thenReturn(returnObject)
-        val response = scooterService.delete(newObject.id)
+        val response = scooterService.update(newObject)
         Assertions.assertEquals(response, true)
     }
 
     @Test
     fun deleteAppIsFailed(){
         Assertions.assertThrows(Exception::class.java) {
-            Mockito.`when`(usuariosRepository.findById(newObject.id)).thenReturn(returnObject)
             Mockito.`when`(ScooterRepository.save(Mockito.any(Scooter::class.java))).thenReturn(returnObject)
-            val response = scooterService.delete(newObject.id)
+            val response = scooterService.update(newObject)
             Assertions.assertEquals(response, true)
         }
     }
+    @Test
+    fun updateScooterIsListCorrect(){
+        Mockito.`when`(scooterRepository.findById(returnObject.id)).thenReturn(returnObject)
+        val response = scooterService.update(newObject)
+        Assertions.assertEquals(response.id, newObject.id)
+        Assertions.assertEquals(response.unidad, newObject.unidad)
+    }
+
+    @Test
+    fun updateCategoriasIsListIncorrect(){
+        Assertions.assertThrows(Exception::class.java) {
+            Mockito.`when`(scooterRepository.findById(returnObject.id)).thenReturn(scooterMock)
+            Mockito.`when`(scooterRepository.save(Mockito.any(scooterMock::class.java))).thenReturn(scooterMock)
+            scooterMock.update(scooterMock)
+        }
+    }
 }
+

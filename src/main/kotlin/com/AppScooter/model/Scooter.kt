@@ -6,6 +6,10 @@ import javax.persistence.*
 @Table(name = "scooter")
 
 class Scooter {
+    fun update(scooterMock: Scooter?) {
+
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(updatable = false)

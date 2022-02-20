@@ -57,4 +57,14 @@ class ScooterService {
         scooterRepository.deleteById(id)
         return true
     }
+
+    fun validarScooter(tipo: String): Boolean {
+        for (i in Scooter){
+            if (tipo == i){
+                return true
+            }
+        }
+        return false
+    }
+}
 }
