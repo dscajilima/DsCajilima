@@ -52,5 +52,17 @@ class AppService {
         return true
 
     }
+    fun verificarLetras(cedula: String?, nombre: String?, apellido: String?):Boolean{
+        if (cedula?.length!! == 10){
+            return false
+        }
+        if (nombre?.length!! < 20){
+            return false
+        }
+        if (apellido?.length!! < 20){
+            return false
+        }
 
+        return true
+    }
 }
